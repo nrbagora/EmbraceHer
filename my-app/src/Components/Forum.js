@@ -1,4 +1,78 @@
-// src/components/Forum.js
+import React, { useState, useEffect } from 'react';
+import './Forum.css';
+
+function Forum() {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [posts, setPosts] = useState([]);
+
+  // Load posts from local storage when the component mounts
+  useEffect(() => {
+    const savedPosts = JSON.parse(localStorage.getItem('forumPosts')) || [];
+    setPosts(savedPosts);
+  }, []);
+
+  // Function to handle form submission
+  const handlePostSubmit = (e) => {
+    e.preventDefault();
+
+    if (!title.trim() || !content.trim()) {
+      alert('Please fill in both the title and content.');
+      return;
+    }
+
+    const newPost = { id: Date.now(), title, content };
+    const updatedPosts = [newPost, ...posts];
+
+    setPosts(updatedPosts);
+    localStorage.setItem('forumPosts', JSON.stringify(updatedPosts));
+
+    // Clear the form
+    setTitle('');
+    setContent('');
+  };
+
+  return (
+    <div className="forum-container">
+      <h2>Share Your Story</h2>
+      
+      <form onSubmit={handlePostSubmit} className="post-form">
+        <input
+          type="text"
+          placeholder="Title of your story"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        <textarea
+          placeholder="Share your experience here..."
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          required
+        />
+        <button type="submit" className="submit-button">Post</button>
+      </form>
+
+      <div className="posts-section">
+        <h3>Community Stories</h3>
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <div key={post.id} className="post-card">
+              <h4>{post.title}</h4>
+              <p>{post.content}</p>
+            </div>
+          ))
+        ) : (
+          <p>No stories shared yet. Be the first to share!</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default Forum;
+
+/*// src/components/Forum.js
 import React from 'react';
 
 function Forum() {
@@ -10,65 +84,5 @@ function Forum() {
   );
 }
 
-export default Forum;
-
-/*import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
-
-const Forum = () => {
-  const [posts, setPosts] = useState([]);
-  const [newPost, setNewPost] = useState("");
-
-  // Generate anonymous user ID
-  useEffect(() => {
-    if (!localStorage.getItem("userId")) {
-      localStorage.setItem("userId", uuidv4());
-    }
-  }, []);
-
-  const handlePost = () => {
-    if (newPost.trim() === "") return;
-    const userId = localStorage.getItem("userId");
-    const post = { id: Date.now(), userId, content: newPost };
-    setPosts([post, ...posts]);
-    setNewPost(""); // Clear input field
-  };
-
-  return (
-    <div style={{ padding: "20px" }}>
-      <h2>Anonymous Forum</h2>
-      <textarea
-        placeholder="Share your thoughts..."
-        value={newPost}
-        onChange={(e) => setNewPost(e.target.value)}
-        rows="4"
-        style={{ width: "100%", padding: "10px" }}
-      ></textarea>
-      <button onClick={handlePost} style={{ marginTop: "10px" }}>
-        Post
-      </button>
-
-      <div style={{ marginTop: "20px" }}>
-        {posts.length > 0 ? (
-          posts.map((post) => (
-            <div
-              key={post.id}
-              style={{
-                border: "1px solid #ddd",
-                padding: "10px",
-                marginBottom: "10px",
-              }}
-            >
-              <strong>Anonymous User {post.userId.slice(0, 8)}:</strong>
-              <p>{post.content}</p>
-            </div>
-          ))
-        ) : (
-          <p>No posts yet. Be the first to share your thoughts!</p>
-        )}
-      </div>
-    </div>
-  );
-};
-
 export default Forum;*/
+
