@@ -1,4 +1,18 @@
-import React, { useState, useEffect } from "react";
+// src/components/Forum.js
+import React from 'react';
+
+function Forum() {
+  return (
+    <div>
+      <h2>Welcome to the Forum</h2>
+      <p>Here you can share your experiences and connect with other mothers.</p>
+    </div>
+  );
+}
+
+export default Forum;
+
+/*import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const Forum = () => {
@@ -57,4 +71,4 @@ const Forum = () => {
   );
 };
 
-export default Forum;
+export default Forum;*/
