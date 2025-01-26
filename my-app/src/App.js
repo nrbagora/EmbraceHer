@@ -6,6 +6,7 @@ import Login from './Components/Login';
 import BreathingExercises from './Components/BreathingExercises';
 import Comments from './Components/Comment'; // Import the new Comments component
 import flowerImage from './flower.png';
+import 'font-awesome/css/font-awesome.min.css'; // Import Font Awesome
 import './App.css';
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
             <h1>Welcome to EmbraceHer</h1>
           </header>
 
-           {/* Quote Section */}
+          {/* Quote Section */}
           <section className="quote-section">
             <h2>Daily Reminder:</h2>
             <p className="quote">{quotes[quoteIndex]}</p>
@@ -58,16 +59,16 @@ function App() {
 
           <div className="App-navigation">
             <button onClick={() => setCurrentPage('forum')} className="page-button">
-              Forum
+              <i className="fa fa-comments" style={{ marginRight: '8px' }}></i>Forum
             </button>
             <button onClick={() => setCurrentPage('resources')} className="page-button">
-              Resources
+              <i className="fa fa-book" style={{ marginRight: '8px' }}></i>Resources
             </button>
             <button onClick={() => setCurrentPage('therapists')} className="page-button">
-              Therapists
+              <i className="fa fa-user-md" style={{ marginRight: '8px' }}></i>Therapists
             </button>
             <button onClick={() => setCurrentPage('breathingExercises')} className="page-button">
-              Breathing Exercises
+              <i className="fa fa-leaf" style={{ marginRight: '8px' }}></i>Breathing Exercises
             </button>
           </div>
 

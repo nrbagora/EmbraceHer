@@ -1,0 +1,59 @@
+.resources-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .resources-page h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2e3b4e;
+  }
+  
+  .resources-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .resource-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .resource-item h3 {
+    font-size: 1.5em;
+    color: #2e3b4e;
+    display: flex;
+    align-items: center;
+  }
+  
+  .resource-item p {
+    font-size: 1em;
+    color: #666;
+  }
+  
+  .resource-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #0077cc;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .resource-link i {
+    margin-right: 5px;
+  }
+  
+  .resource-link:hover {
+    text-decoration: underline;
+  }
+  
+  .resource-link:focus {
+    outline: 2px solid #0077cc;
+  }
+  
