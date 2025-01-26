@@ -100,3 +100,9 @@ main {
   line-height: 1.6;
 }
 
+.quote-section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+

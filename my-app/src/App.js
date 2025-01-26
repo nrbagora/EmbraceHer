@@ -52,9 +52,9 @@ function App() {
 
            {/* Quote Section */}
           <section className="quote-section">
-            <h2>Daily Reminder: </h2>
+            <h2>Daily Reminder:</h2>
             <p className="quote">{quotes[quoteIndex]}</p>
-          </section>
+          </section>  
 
           <div className="App-navigation">
             <button onClick={() => setCurrentPage('forum')} className="page-button">
